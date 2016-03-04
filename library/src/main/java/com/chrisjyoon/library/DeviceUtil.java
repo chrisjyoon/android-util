@@ -1,4 +1,4 @@
-package chrisjyoon.library;
+package com.chrisjyoon.library;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -1,4 +1,4 @@
-package chrisjyoon.androidutil;
+package com.chrisjyoon.androidutil;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        startFragment();
+    }
+
+    private void startFragment() {
+
     }
 
 }

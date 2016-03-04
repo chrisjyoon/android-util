@@ -1,4 +1,4 @@
-package chrisjyoon.library;
+package chrisjyoon.anroidutil;
 
 import org.junit.Test;
 

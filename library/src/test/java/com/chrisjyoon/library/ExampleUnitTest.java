@@ -1,4 +1,4 @@
-package chrisjyoon.androidutil;
+package com.chrisjyoon.library;
 
 import org.junit.Test;
 

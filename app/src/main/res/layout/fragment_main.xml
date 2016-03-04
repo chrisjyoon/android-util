@@ -6,8 +6,12 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="chrisjyoon.androidutil.MainActivityFragment"
+                tools:context="chrisjyoon.anroidutil.MainActivityFragment"
                 tools:showIn="@layout/activity_main">
-
+    <TextView
+        android:id="@+id/nav_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SS"/>
 
 </RelativeLayout>
