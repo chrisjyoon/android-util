@@ -3,11 +3,11 @@ apply plugin: 'com.novoda.bintray-release'
 
 publish {
     userOrg = 'chrisjyoon'
-    groupId = 'com.chrisjyoon'
-    artifactId = 'android-util'
+    groupId = 'com.chrisjyoon.library'
+    artifactId = 'android-library'
     publishVersion = '0.0.1'
-    desc = 'Frequently used methods for Android application'
-    website = 'https://github.com/chrisjyoon/android-util'
+    desc = 'Frequently used methods in Android Application'
+    website = 'https://github.com/chrisjyoon/android-library'
     issueTracker = "${website}/issues"
     repository = "${website}.git"
 }
@@ -20,7 +20,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
     }
     buildTypes {
         release {
