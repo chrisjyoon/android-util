@@ -7,6 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.chrisjyoon.library.DeviceUtil;
+import com.chrisjyoon.library.Logger;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

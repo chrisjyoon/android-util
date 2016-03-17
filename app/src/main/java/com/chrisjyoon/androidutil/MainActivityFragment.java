@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chrisjyoon.library.DeviceUtil;
+import com.chrisjyoon.library.Logger;
+import com.chrisjyoon.library.MyUtil;
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-    DeviceUtil mDeviceUtil;
 
     public MainActivityFragment() {
     }
@@ -23,7 +24,8 @@ public class MainActivityFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mDeviceUtil = DeviceUtil.getInstance(getActivity());
+
+        Logger.d("onCreate");
     }
 
     @Override
@@ -32,9 +34,8 @@ public class MainActivityFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         TextView tvNavHeight = (TextView) rootView.findViewById(R.id.nav_height);
-        String navHeight = "Navigation bar height = " + mDeviceUtil.getNavBarHeight();
+        String navHeight = "Navigation bar height = " + DeviceUtil.getNavBarHeight(getContext());
         tvNavHeight.setText(navHeight);
-
 
         return rootView;
     }
