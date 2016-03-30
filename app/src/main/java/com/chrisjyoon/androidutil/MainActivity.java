@@ -1,38 +1,69 @@
 package com.chrisjyoon.androidutil;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 
-import com.chrisjyoon.library.DeviceUtil;
-import com.chrisjyoon.library.Logger;
+import com.chrisjyoon.androidutil.model.AppInfo;
+import com.chrisjyoon.androidutil.network.NetworkApi;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.inject.Inject;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    @Bind(R.id.fab) FloatingActionButton fab;
+    @Inject SharedPreferences mSharedPreferences;
+    @Inject OkHttpClient mOkHttpClient;
+    @Inject NetworkApi mNetworkApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ((MyApplication) getApplication()).getAppComponent().inject(this);
+
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        startFragment();
+
+        boolean started = mSharedPreferences.getBoolean("IS_START", false);
+    }
+
+    @OnClick(R.id.fab)
+    public void showSnackbar() {
+        Snackbar.make(fab, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+
+        Call<AppInfo> call = mNetworkApi.getAppInfo();
+        call.enqueue(new Callback<AppInfo>() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onResponse(Call<AppInfo> call, Response<AppInfo> response) {
+                AppInfo appInfo = response.body();
+                Log.d("chris", appInfo.getResultCode());
+            }
+
+            @Override
+            public void onFailure(Call<AppInfo> call, Throwable t) {
+                Log.d("chris", "call getAppInfo failed");
             }
         });
-
-        startFragment();
     }
+
 
     private void startFragment() {
 
